@@ -1,0 +1,69 @@
+# .NET
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.suo
+*.csproj.user
+packages/
+.vs/
+.vscode/
+*.user
+*.sln.iml
+
+# Dependencies
+node_modules/
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Configuration files with sensitive data
+appsettings.Development.json
+appsettings.Production.json
+.env
+.env.local
+.env.*.local
+
+# User secrets
+secrets.json
+user-secrets-id
+*/secrets.json
+
+# Application Insights
+applicationinsights.config
+
+# OS
+.DS_Store
+Thumbs.db
+.idea/
+
+# IDE
+.vscode/
+*.code-workspace
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.bak
+*.log
+
+# Node (if applicable)
+package-lock.json
+yarn.lock
