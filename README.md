@@ -1,4 +1,4 @@
-# SimpleApi - Application Insights Demo
+# WeatherInsights - Dados sobre clima & temperatura para prática de uso do Azure Application Insights
 
 Uma API ASP.NET Core simples desenvolvida como exercício da certificação **AZ-204** (Azure Developer Associate) para demonstrar a integração e uso do **Azure Application Insights**.
 

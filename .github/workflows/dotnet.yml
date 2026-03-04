@@ -1,0 +1,57 @@
+name: .NET CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    # Checkout do código
+    - name: ✅ Checkout code
+      uses: actions/checkout@v4
+
+    # Setup do .NET
+    - name: 🔧 Setup .NET 9.0
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x'
+
+    # Restaurar dependências
+    - name: 📦 Restore dependencies
+      run: dotnet restore
+      working-directory: ./
+
+    # Build do projeto
+    - name: 🏗️ Build
+      run: dotnet build --configuration Release --no-restore
+      working-directory: ./
+
+    # Executar testes (quando houver)
+    - name: 🧪 Run tests
+      run: dotnet test --configuration Release --no-build --verbosity normal
+      working-directory: ./
+      continue-on-error: true
+
+    # Verificar vulnerabilidades
+    - name: 🔒 Check vulnerabilities
+      run: dotnet list package --vulnerable
+      continue-on-error: true
+
+    # Publicar artefatos (opcional)
+    - name: 📤 Publish artifacts
+      if: success()
+      run: dotnet publish --configuration Release --output ./publish
+      working-directory: ./
+
+    # Upload dos artefatos para GitHub
+    - name: ⬆️ Upload build artifacts
+      if: success()
+      uses: actions/upload-artifact@v4
+      with:
+        name: dotnet-app
+        path: ./publish

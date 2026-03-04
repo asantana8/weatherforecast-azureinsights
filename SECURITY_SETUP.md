@@ -35,10 +35,10 @@ Este projeto foi configurado para usar **variáveis de ambiente** em vez de mant
 git clone https://github.com/asantana8/weatherforecast-azureinsights.git
 cd weatherforecast-azureinsights
 
-# Crie um arquivo .env local (copie de .env.example)
+# Criado um arquivo .env local (copie de .env.example)
 cp .env.example .env
 
-# Edite o arquivo .env com seus valores reais
+# Editei o arquivo .env com seus valores reais
 # Use seu editor favorito (VS Code, Notepad++, etc)
 ```
 

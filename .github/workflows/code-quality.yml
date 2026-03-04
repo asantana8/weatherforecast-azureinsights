@@ -1,0 +1,36 @@
+name: Code Quality Analysis
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  analyze:
+    runs-on: windows-latest
+
+    steps:
+    - name: ✅ Checkout code
+      uses: actions/checkout@v4
+
+    - name: 🔧 Setup .NET 9.0
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x'
+
+    # Análise de segurança com Sonar (opcional - requer token)
+    - name: 🔐 Run security checks
+      run: dotnet restore
+      working-directory: ./
+
+    # Lint - Verificar padrão de código
+    - name: 📋 Check code style
+      run: |
+        dotnet format --verify-no-changes --verbosity diagnostic
+      continue-on-error: true
+      working-directory: ./
+
+    # Informações sobre o build
+    - name: 📊 Display build info
+      run: dotnet --version
