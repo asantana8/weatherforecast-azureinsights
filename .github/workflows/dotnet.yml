@@ -23,17 +23,17 @@ jobs:
 
     # Restaurar dependências
     - name: 📦 Restore dependencies
-      run: dotnet restore
+      run: dotnet restore AppInsightsAz204.sln
       working-directory: ./
 
     # Build do projeto
     - name: 🏗️ Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build AppInsightsAz204.sln --configuration Release --no-restore
       working-directory: ./
 
     # Executar testes (quando houver)
     - name: 🧪 Run tests
-      run: dotnet test --configuration Release --no-build --verbosity normal
+      run: dotnet test AppInsightsAz204.sln --configuration Release --no-build --verbosity normal
       working-directory: ./
       continue-on-error: true
 
@@ -45,7 +45,7 @@ jobs:
     # Publicar artefatos (opcional)
     - name: 📤 Publish artifacts
       if: success()
-      run: dotnet publish --configuration Release --output ./publish
+      run: dotnet publish AppInsightsAz204.sln --configuration Release --output ./publish
       working-directory: ./
 
     # Upload dos artefatos para GitHub
